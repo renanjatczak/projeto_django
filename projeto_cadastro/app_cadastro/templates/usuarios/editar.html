@@ -1,0 +1,29 @@
+{% extends 'usuarios/base.html' %}
+{% block conteudo %}
+<div class="container my-5" style="max-width: 1300px;">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card bg-dark text-white mb-4">
+                <div class="card-header">
+                    <h1>Editar Usuário</h1>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'editar_usuario' usuario.id_usuario %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" name="nome" id="nome" value="{{ usuario.nome }}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="idade">Idade</label>
+                            <input type="number" name="idade" id="idade" value="{{ usuario.idade }}" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Atualizar</button>
+                        <a href="{% url 'listagem_usuarios' %}" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

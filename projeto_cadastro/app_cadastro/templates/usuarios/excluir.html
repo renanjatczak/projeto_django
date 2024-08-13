@@ -1,0 +1,22 @@
+{% extends 'usuarios/base.html' %}
+{% block conteudo %}
+<div class="container my-5" style="max-width: 1300px;">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card bg-dark text-white mb-4">
+                <div class="card-header">
+                    <h1>Excluir Usuário</h1>
+                    <p>Tem certeza de que deseja excluir {{ usuario.nome }}?</p>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'excluir_usuario' usuario.id_usuario %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                        <a href="{% url 'listagem_usuarios' %}" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
